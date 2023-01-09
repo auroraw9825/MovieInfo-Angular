@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+    <style>
+        body {
+            background: #000033;
+            font-family: "Times New Roman", Times, serif;
+        }
+        h1{
+            font-size: 40px; 
+            color: white;
+        }
+        h2{
+            font-size: 20px; 
+            font-style: italic;
+            color: silver;
+        }
+        h3{
+            font-size: 22px; 
+            color: silver;
+        }
+        h4{
+            font-size: 13px; 
+            font-weight: bold;
+            color: white;
+        }
+        h5{
+            font-size: 20px; 
+            /* font-weight: bold; */
+            color: white;
+        }
+        p{
+            font-size: 18px; 
+            color: silver;
+        }
+        .span_title{
+            font-size: 16px; 
+            /* font-weight: bold; */
+            color: white;
+        }
+        .span_text{
+            font-size: 18px; 
+            color: silver;
+        }
+        .watchListButton{
+            width: 200px;
+            height:40px;
+            background-color: DodgerBlue;
+            color:white;
+            font-size: 18px;
+            border:none;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <br>
+    <div style="margin-left: 15%; width: 70%; margin-top:10%;"> 
+
+        <div class="row">
+            <div *ngIf="movieVideo && big==true" style="width: 60%; height: 50%; margin-right: 5%;">
+                <youtube-player videoId={{movieVideo.key}}>
+                </youtube-player>
+            </div>
+            <div *ngIf="movieVideo && small==true" style="margin-right: 2%;">
+                <youtube-player videoId={{movieVideo.key}} [height]="180" [width]="325">
+                </youtube-player>
+            </div>
+            <div style = "width: 350px;" *ngIf="movieDetails"> 
+                <div><h1 *ngIf="movieDetails.title">{{movieDetails?.title}}</h1></div>
+                <div><h2>{{movieDetails?.tagline}}</h2></div>
+                <br>
+                <div><h3>{{movieDetails?.release_year}} | &#9733; {{movieDetails?.vote_average}} | {{movieDetails?.runtime}}</h3></div>
+                <br>
+                <div><span class="span_title">Genres: </span><span class="span_text">{{movieDetails?.genres}}</span></div>
+                <div><span class="span_title">Spoken Languages: </span><span class="span_text">{{movieDetails?.spoken_languages}}</span></div>  
+                <br>
+                <button id="Btn" class="watchListButton" (click)="addOrRemoveWatchList(movieDetails)" ng-model="WLBtn" style="outline:none;">
+                    {{buttonText}}
+                </button>
+                <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]="alertType" (closed)="successMessage = ''" 
+                    style=" margin-top: 10px; font-size: 16px;">{{ successMessage }} 
+                </ngb-alert>
+            </div>   
+        </div>
+        <br>
+
+        <div><h5>Description</h5></div>
+        <!-- 用text-align:justify让两端对齐 -->
+        <div *ngIf="movieDetails"><p style="text-align:justify">{{movieDetails.overview}}</p></div>
+        <br>
+        <div><h5>Share</h5></div>
+        <a class="twitter-share-button" [href]="twitterShareText" target="_blank"> 
+            <i class="fa fa-twitter" style="font-size:30px; margin-right: 5px;"></i>
+        </a>
+        <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small">
+            <a target="_blank" [href]="FBShareText" class="fb-xfbml-parse-ignore">
+                <i class="fa fa-facebook-square" style="font-size:30px;"></i></a></div> -->
+        <a target="_blank" class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"
+        [href]="FBShareText"> <i class="fa fa-facebook-square" style="font-size:30px;"></i></a>
+        <br><br><br>
+        <!-- <div><h5>Full Cast and Crew</h5></div> -->
+        <app-movie-cast></app-movie-cast>
+        <br><br>
+        <!-- <div><h5>Revies</h5></div> -->
+        <app-movie-reviews></app-movie-reviews>
+
+
+    </div>
+    <br><br>
+    <app-recommended-movie></app-recommended-movie>
+    <br>
+    <app-similar-movie></app-similar-movie>
+    <br><br>
+    <!-- <script type="text/javascript">
+        console.log("nihao!");
+        var watchlistButton = document.getElementById("btn");
+        console.log("hello:" +watchlistButton.innerHTML);
+        watchlistButton.innerHTML = "Remove from WatchList";
+        // if(watchlistButton.innerHTML == "Add to Watchlist"){
+        //     watchlistButton.innerHTML = "Remove from WatchList";
+        // } 
+    </script> -->
+</body>
+</html>

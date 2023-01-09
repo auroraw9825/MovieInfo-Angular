@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background: #000033;
+            font-family: "Times New Roman", Times, serif;
+        }
+        h5{
+            font-size: 20px; 
+            /* font-weight: bold; */
+            color: white;
+        }
+        .reviewSection{
+            background-color: white;
+            width: 1000px;
+            height: 250px;
+            border-radius: 20px;
+            margin: 15px;
+        }
+        .reviewSectionSmall{
+            background-color: white;
+            width: 290px;
+            height: 460px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .innerSec{
+            margin-left: 15px;
+            width:250px;
+        }
+        .imgPosition{
+            height: 90px; 
+            width: 90px;
+            position: relative;
+            left:50px;
+            top: 30px;
+        }
+        .header{
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+        .t1{
+            font-size: 14px;
+            color: grey;
+        }
+        .t2{
+            font-size: 15px;
+            color: black;
+            text-overflow: ellipsis; 
+            display: -webkit-box;
+            max-width: 730px;
+            -webkit-line-clamp: 3; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .rating{
+            color:  white;
+            padding-left: 5px;
+            font-size: 15px;
+        }
+        h1{
+            font-size: 40px; 
+            color: white;
+        }
+        .readRest:link{
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+    <div *ngIf="movieReviews"><h1 *ngIf="movieReviews.length!=0">Reviews  {{movieReviews.length}}</h1></div>
+    <div *ngFor="let re of movieReviews; index as i">
+
+        <div *ngIf="big==true && movieReviews">
+            <div class="reviewSection">
+                <div class="row">
+                    <!-- the picture on the left -->
+                    <div style=" height: 200px; width: 200px;">
+                        <img [src] = "re?.avatar_path" class="imgPosition">
+                    </div>
+                    <!-- the text on the right -->
+                    <div>  
+                        <br> 
+                        <div class="row">
+                            <div class="header">A review created by {{re?.author}}  </div>
+                            <div style="background-color:black; width: 50px; height: 25px; color:white; border-radius: 10px; margin-left:20px; margin-top: 3px;">
+                                <div class="rating">&#9733; {{re?.rating}}</div>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="t1">Written by {{re?.author}} on {{re?.created_at}}</div>
+                        <br>
+                        <div class="t2">{{re?.content}}</div>
+                        <br>
+                        <a class="readRest" [href]="re?.url" target="_blank" rel="nofollow noopener noreferrer" style="font-size: 15px;">Read the rest</a>
+                    </div>
+    
+                </div>
+    
+            </div>
+        </div>
+
+        <div *ngIf="small==true && movieReviews">
+            <div class="reviewSectionSmall">
+                <div class="innerSec">
+                    <!-- the picture on the top, not left as in the desktop window -->
+                    <div style=" height:100px; width: 100px;">
+                        <img [src] = "re?.avatar_path" class="imgPosition">
+                    </div>
+                    <br>
+                    <!-- the text about the author -->
+                    <div>  
+                        <br> 
+                        <div class="row">
+                            <div class="header" >A review created by {{re?.author}}  </div>
+                            <div style="background-color:black; width: 50px; height: 25px; color:white; border-radius: 10px; margin-left:20px; margin-top: 3px;">
+                                <div class="rating">&#9733; {{re?.rating}}</div>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="t1">Written by {{re?.author}} on {{re?.created_at}}</div>
+                        <br>
+                        <div class="t2">{{re?.content}}</div>
+                        <br>
+                        <a class="readRest" [href]="re?.url" target="_blank" rel="nofollow noopener noreferrer" style="font-size: 15px;">Read the rest</a>
+                    </div>
+    
+                </div>
+    
+            </div>
+
+        </div>
+        
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background: #000033;
+            font-family: "Times New Roman", Times, serif;
+        }
+        .carousel-container:hover img {
+			transform: scale(1.05);
+		}
+        div.oneCard{
+            margin: 12px 12px 12px 12px;
+            padding-bottom: 40px;
+        }
+        div.oneCard:hover img {
+			transform: scale(1.05);
+		}
+        h1{
+            color: white;
+            margin-left: 120px;
+        }
+        .movieTitle{
+            width:190px;
+            height: 265px;
+            /* display:none; */
+            background: linear-gradient(to top, black, rgba(133, 108, 108, 0));
+            color:white;
+            position: relative;
+            bottom: 255px;
+            left:-5px;
+            vertical-align: bottom;
+            opacity: 0;
+        }
+        .movieTitle:hover{
+			/* display: block; */
+            opacity: 1;
+		}
+        .text{
+            width:180px;
+            color:white;
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div *ngIf="storageLen" style="color:white; font-size:30px; text-align: center;">
+        No Items found in Watchlist.
+    </div>
+<!-- 
+    是要把东西在json化之后再用吧？ -->
+    <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)" style="outline:none;">
+        <ng-template ngbSlide *ngFor="let mvs of movies; index as i">
+            <div class="card-deck" style = "background-color: #000033; padding-left: 150px; border:0; outline:none;">
+                <div class = "oneCard" *ngFor="let m of mvs">
+                    <a [routerLink] = "['watch', 'movie', m.id]" rel="nofollow noopener noreferrer">
+                        <div class="picsum-img-wrapper" style="height:270px; width:170px;">
+                            <img class="card-img-top" style = "width:170px;"[src]="m.poster_path" alt="m.title">
+                            <div class="movieTitle">
+                                <div class="text">{{m.title}}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</body>
+</html>

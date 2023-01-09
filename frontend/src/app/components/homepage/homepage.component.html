@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background: #000033;
+            font-family: "Times New Roman", Times, serif;
+        }
+        h1{
+            color: white;
+            margin-left: 120px;
+        }
+        /* ::-webkit-scrollbar {
+            width: 1em;
+            height: 6px;
+            border-radius: 3px;
+            background-color: white;
+            border: 1px solid darkgrey;
+        }   
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(241, 0, 0, 0.938);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: white;
+            outline: 1px solid slategrey;
+            border-radius: 3px;
+        } */
+        /* width */
+        ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        }
+        /* Track */
+        ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+        }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: darkgrey;
+        border-radius: 10px;
+        }
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: gray;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div>
+    <!-- <app-nav-bar></app-nav-bar> -->
+        <br>
+        <app-current-playing-carousel></app-current-playing-carousel>
+        <br>
+        <app-continue-watching></app-continue-watching>
+        <br>
+        <app-popular-movies-cards></app-popular-movies-cards>
+        <br>
+        <app-top-rated-movies-cards></app-top-rated-movies-cards>
+        <br>
+        <app-trending-movies-cards></app-trending-movies-cards>
+        <br>
+        <app-popular-tv></app-popular-tv>>
+        <br>
+        <app-top-rated-tv></app-top-rated-tv>
+        <br>
+        <app-trending-tv></app-trending-tv>
+        <br>
+        <!-- <app-footer></app-footer> -->
+    </div>
+</body>
+</html>

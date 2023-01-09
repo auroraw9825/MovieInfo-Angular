@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+		body {
+            background: #000033;
+            font-family: "Times New Roman", Times, serif;
+        }
+        .carousel-container:hover {
+			transform: scale(1.05);
+		}
+		#croppedImgDiv {
+			/* width: 2000px; 
+			height: 500px; */
+			overflow: hidden;
+			
+			width: 80%; 
+			height: 400px;
+			/* height: 30%; */
+			margin-left: 10%; 
+		}
+		.movieTitle{
+            width:1150px; 
+			height: 300px;
+            /* display:none; */
+            background: linear-gradient(to top, black, rgba(133, 108, 108, 0));
+            color:white;
+            position: relative;
+            bottom: 400px;
+            /* left:-5px; */
+            vertical-align: bottom;
+            opacity: 0;
+        }
+        .movieTitle:hover{
+			/* display: block; */
+            opacity: 1;
+		}
+		.text{
+            color:white;
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+        }
+
+		#croppedImgDivSmall {
+			/* width: 2000px; 
+			height: 500px; */
+			overflow: hidden;
+			
+			width: 80%; 
+			height: 200px;
+			/* height: 30%; */
+			margin-left: 10%; 
+		}
+		.movieTitleSmall{
+            width:360px; 
+			height: 180px;
+            /* display:none; */
+            background: linear-gradient(to top, black, rgba(133, 108, 108, 0));
+            color:white;
+            position: relative;
+            bottom: 180px;
+            /* left:-5px; */
+            vertical-align: bottom;
+            opacity: 1;
+        }
+		.textSmall{
+            color:white;
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+	<br>
+	<div *ngIf="big==true">
+		<ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)" style="outline:none;">
+			<ng-template ngbSlide *ngFor="let post of posts; index as i">
+				<!-- <div class="carousel-caption">
+					<p style = "text-align:left;">{{post.title}}</p>
+				</div> -->
+				<div style="background-color: #000033;">
+					<a [routerLink] = "['watch', 'movie', post.id]" rel="nofollow noopener noreferrer">
+						<div class="carousel-container" id="croppedImgDiv"> 
+							<img style="width:1150px; height: 500px;" [src]="post.backdrop_path" alt="post.title">
+							<div class="movieTitle">
+								<div class="text">{{post.title}}</div>
+							</div>
+						</div>
+						
+					</a>
+				</div>
+				
+			</ng-template>
+		</ngb-carousel>
+	</div>
+
+	<div *ngIf="small==true">
+		<ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" [showNavigationIndicators]="false"  (slide)="onSlide($event)" style="outline:none;">
+			<ng-template ngbSlide *ngFor="let post of posts; index as i">
+				<div style="background-color: #000033;">
+					<a [routerLink] = "['watch', 'movie', post.id]" rel="nofollow noopener noreferrer">
+						<div class="carousel-container" id="croppedImgDivSmall"> 
+							<img style="width:360px; height: 200px;" [src]="post.backdrop_path" alt="post.title">
+							<div class="movieTitleSmall">
+								<div class="textSmall">{{post.title}}</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+			</ng-template>
+		</ngb-carousel>
+	</div>
+
+<br>
+</body>
+</html>
+
+
+<!-- *ngFor 是 Angular 中的结构型指令，用来遍历数据并动态的添加 DOM 元素，它由两部分组成，星号( * )和指令的属性名( ngFor ) -->
+<!-- <div *ngIf = "posts">
+	<div *ngFor = "let post of posts"> 
+	
+		id: {{post.id}} <br/>
+		title: {{post.title}}<br/>
+	</div>
+</div> -->
+
+
