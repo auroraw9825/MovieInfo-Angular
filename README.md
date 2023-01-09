@@ -7,6 +7,8 @@ A webpage that allows you to search for information regarding movies and TV show
 - Developed multiple fragments and activities for Detail page with **YouTube player**, trim text view, Glide, etc.
 - Incorporated Watchlist Fragment with drag & drop feature, and persist items across sessions using **localStorage**.
 
+
+Tools
 - AJAX and JSON
   - Standards-based presentation using XHTML and CSS.
   - Result display and interaction using the Document Object Model (DOM).
